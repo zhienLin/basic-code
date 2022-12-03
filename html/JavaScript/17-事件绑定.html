@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<input type="button" value="everything is ok." id="按钮1">
+<input type="button" value="everything is bad." id="按钮2" onclick="on()">
+
+
+<script>
+
+    function on(){
+        alert("按钮2被点击了");
+    }
+
+
+    document.getElementById("按钮1").onclick=function (){
+        alert("按钮1被点击了");
+    }
+
+
+</script>
+</body>
+</html>

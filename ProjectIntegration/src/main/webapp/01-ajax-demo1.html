@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    //1创建核心对象
+    var xhttp;
+    if (window.XMLHttpRequest) {
+        xhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+
+    //2发送请求:最好是绝对路径，因为以后前后端要分离，相当于两个工程，会在不同的服务器中
+    //这个时候需要访问绝对的路径
+    xhttp.open("GET", "http://localhost:8080/ProjectIntegration/ajaxServlet");
+    xhttp.send();
+
+
+    //3获取响应
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+    // 通过 this.responseText 可以获取到服务端响应的数据
+            alert(this.responseText);
+        }
+    };
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+</head>
+<body>
+<form action="/web-demo/loginServlet" method="post" id="loginUsername">
+    <h1 align="center">LOGIN</h1><br>
+    UserName <input id="userName" name="userName"><br>
+    <span id="name_error" style="display: none;color: crimson"  >您输入的用户名无效</span><br>
+    Password <input id="password" name="password" type="password" ><br>
+    <span id="pwd_error" style="display: none;color: crimson">您输入的密码不符合规范</span><br>
+    <input type="submit">
+    <input type="reset">
+    <a href="/web-demo/signUp.html" target="_blank">没有账号？点击注册</a>
+</form>
+
+<script>
+    //获取相应的元素
+    let name = document.getElementById("userName");
+    let pwd = document.getElementById("password");
+    let name_error = document.getElementById("name_error");
+    let ped_error = document.getElementById("pwd_error");
+
+
+    //给定元素添加监听事件
+    name.onblur = nameFun;
+    pwd.onblur = pwdFun;
+
+    function nameFun() {
+        let trimName = name.value.trim();
+        let flag = trimName.length >= 1 && trimName.length <= 6;
+        if (!flag)
+            name_error.style = "display: ;color: crimson";
+        else
+            name_error.style = "display: none;color: crimson";
+        return flag;
+    }
+
+
+    var reg = /^\w{6,12}$/;
+    function pwdFun() {
+        let trimPwd = pwd.value.trim();
+        let flag = reg.test(trimPwd);
+        if (flag)
+            ped_error.style = "display: none;color: crimson";
+        else
+            ped_error.style = "display: ;color: crimson";
+        return flag;
+    }
+
+    document.getElementById("loginUsername").onsubmit = function () {
+        return nameFun() && pwdFun();
+    }
+
+</script>
+
+</body>
+</html>

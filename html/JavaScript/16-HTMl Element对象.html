@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="light" src="../imgs/off.gif"> <br>
+
+<div class="cls">传智教育</div>   <br>
+<div class="cls">黑马程序员</div> <br>
+
+<input type="checkbox" name="hobby"> 电影
+<input type="checkbox" name="hobby"> 旅游
+<input type="checkbox" name="hobby"> 游戏
+<br>
+
+<script>
+
+    // let elementById = document.getElementById("light");
+    // alert(elementById);
+    // elementById.src="../imgs/on.gif"
+
+
+   // style:用来设置css的样式
+   // innerHTML:设置元素内容
+   let elementsByTagName = document.getElementsByTagName("div");
+    for (let i = 0; i < elementsByTagName.length; i++) {
+        elementsByTagName[i].style.color="red";
+        elementsByTagName[i].innerHTML="呵呵";
+    }
+
+   let elementsByName = document.getElementsByName("hobby");
+   for (let i = 0; i < elementsByName.length; i++) {
+       elementsByName[i].checked = true;
+   }
+
+/*   let elementsByClassName = document.getElementsByClassName("cls");
+   for (let i = 0; i < elementsByClassName.length; i++) {
+       alert(elementsByClassName[i]);
+   }*/
+
+</script>
+</body>
+</html>

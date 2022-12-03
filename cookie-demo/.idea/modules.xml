@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Filrter/Filrter.iml" filepath="$PROJECT_DIR$/../Filrter/Filrter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ProjectIntegration/ProjectIntegration.iml" filepath="$PROJECT_DIR$/../ProjectIntegration/ProjectIntegration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../cookie/cookie.iml" filepath="$PROJECT_DIR$/../cookie/cookie.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cookie-demo.iml" filepath="$PROJECT_DIR$/cookie-demo.iml" />
+    </modules>
+  </component>
+</project>

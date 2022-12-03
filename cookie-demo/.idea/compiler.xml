@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Filrter" />
+        <module name="cookie" />
+        <module name="ProjectIntegration" />
+        <module name="cookie-demo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="11">
+      <module name="cookie" target="11" />
+      <module name="cookie-demo" target="8" />
+      <module name="Filrter" target="11" />
+      <module name="ProjectIntegration" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

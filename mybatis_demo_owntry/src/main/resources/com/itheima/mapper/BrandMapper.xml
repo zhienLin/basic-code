@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.itheima.mapper.BrandMapper">
+
+    <!--
+    数据库表的字段名称 和 实体类的属性名 不一致，不能自动封装数据
+      *起别名：对不一样的字段名起别名，让别名和属性名一样，
+        但是每次查询都要定义别名，不方便 用sql片段的方法
+        但是这样定义sql片段一点也不灵活
+
+      *resultMap:
+        1．定义<resultMap>标签
+        2．在<select>标签中，使用resultMap属性替换resultType属性
+        id：唯一的表示
+        type:映射的类型，支持别名
+        里面有两个子标签
+            id 是主键字段的映射
+            result 是其他非主键字段的映射
+        column是表的字段名
+        property是实体类的属性名
+    -->
+
+    <resultMap id="resultBrandMap" type="Brand">
+        <result column="brand_name" property="brandName"/>
+        <result column="company_name" property="companyName"/>
+    </resultMap>
+
+
+    <sql id="brand_column">
+        id, brand_name brandName,company_name companyName, ordered,
+         description, status
+    </sql>
+
+        <select id="selectAll" resultType="brand">
+            select <include refid="brand_column"></include> from tb_brand;
+        </select>
+
+<!--    <select id="selectAll" resultMap="resultBrandMap">
+        select *
+        from tb_brand;
+    </select>-->
+
+
+    <!--
+
+        参数占位符:
+            1．#{}:会将其替换?，为了防止SQL注入2．$(}:拼sql。会存在SQL注入问题
+            3．使用时机:
+            *参数传递的时候:#{}
+            *表名或者列名不固定的情况下:$0}会存在SQL注入问题
+
+        参数类型: parameterType是可以省略的，因为之前在定义方法的时候已经明确了所传入的具体参数类型了
+
+        SQL语句中特殊字符处理:(因为在.xml文件中，出现"<"时，不一定就是小于符号
+            *转义字符   &lt; 代表小于号
+            #<![CDATA[内容]]>
+
+    -->
+
+    <!--按id查询-->
+    <select id="selectByIdBrand" resultMap="resultBrandMap">
+        select *
+        from tb_brand
+        where id = #{id};
+    </select>
+
+    <select id="selectByIdless" resultMap="resultBrandMap">
+        select *
+        from tb_brand
+        where id <![CDATA[
+                < #{id}
+        ]]>;
+    </select>
+
+
+    <!--条件查询-->
+    <!--散装参数-->
+    <select id="selectByCondition1" resultMap="resultBrandMap">
+        select *
+        from tb_brand
+        where status = #{status}
+          and company_name like #{companyName}
+          and brand_name like #{brandName}
+    </select>
+    <!--对象参数-->
+    <select id="selectByCondition2" resultMap="resultBrandMap">
+        select *
+        from tb_brand
+        where status = #{status}
+          and company_name like #{companyName}
+          and brand_name like #{brandName}
+    </select>
+    <!--集合参数-->
+    <!--    <select id="selectByCondition3" resultMap="resultBrandMap">
+                    select * from tb_brand where
+                    status = #{status}
+                and company_name like #{companyName}
+                and brand_name like #{brandName}
+        </select>-->
+    <!--动态查询-->
+    <!--
+    *if:条件判断
+        test:逻辑表达式的问题，因为where后面不能直接跟and或者其他别的逻辑连接词
+        解决办法：加一个恒等式,让所有的形式都一样
+                 或者<where>的方法
+    -->
+    <select id="selectByCondition3" resultMap="resultBrandMap">
+        select * from tb_brand
+        <where>
+            <if test="status != null">
+                status = #{status}
+            </if>
+            <if test="companyName != null and companyName != '' ">
+                and company_name like #{companyName}
+            </if>
+            <if test="brandName != null and brandName != '' ">
+                and brand_name like #{brandName}
+            </if>
+        </where>
+    </select>
+
+    <!--单一查询-->
+    <select id="selectByConditionSingal" resultType="com.itheima.pojo.Brand">
+        select * from tb_brand
+        <where>
+            <choose>
+                <when test="status != null">
+                    status = #{status}
+                </when>
+
+                <when test="companyName != null and companyName != '' ">
+                    company_name like #{companyName}
+                </when>
+
+                <when test="brandName != null and brandName != '' ">
+                    brand_name like #{brandName}
+                </when>
+
+            </choose>
+        </where>
+
+    </select>
+
+    <!--插入-->
+    <!-- 主键返回：
+    这个方法可以使得创建完对象之后，把当前的主键与插入的新的事务关联起来
+    -->
+    <insert id="insertInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_brand
+            (brand_name, company_name, ordered, description, status)
+        values (#{brandName}, #{companyName}, #{ordered}, #{description}, #{status});
+    </insert>
+
+    <!--修改全部字段-->
+    <update id="updata">
+        update tb_brand
+        set brand_name   = #{brandName},
+            company_name = #{companyName},
+            ordered      = #{ordered},
+            description  = #{description},
+            status       = #{status}
+        where id = #{id};
+    </update>
+
+    <!--动态地修改全部字段-->
+    <update id="updataDynamic">
+        update tb_brand
+        set
+            <if test="brandName != null and brandName != ''">
+                brand_name = #{brandName},
+            </if>
+            <if test="companyName != null and companyName != ''">
+                company_name = #{companyName},
+            </if>
+            <if test="ordered != null">
+                ordered = #{ordered},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description},
+            </if>
+            <if test="status != null">
+                status = #{status}
+            </if>
+            where id = #{id};
+    </update>
+
+<!--
+    mybatis会将数组参数，封装为一个Map集合。
+    *默认:array =数组
+    使用@Param注解改变map集合的默认-->
+
+    <!--根据id批量删除-->
+    <delete id="deleteByIds">
+        delete from tb_brand where id in
+    (
+        <foreach collection="ids" item="id" separator=",">
+                #{id}
+        </foreach>
+        )
+
+    </delete>
+
+
+    <select id="selectByCondition11" resultType="com.itheima.pojo.Brand">
+        select *
+        from tb_brand
+        where status = #{arg0}
+          and company_name like #{arg1}
+          and brand_name like #{arg2}
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

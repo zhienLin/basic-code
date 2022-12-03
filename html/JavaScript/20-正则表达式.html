@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    // 规则：单词字符，6~12
+
+    var reg = /^\w{6,12}$/;
+
+    var regTel = /^[1]\d{10}$/;
+
+    var str = "abcccc";
+    var tel = "19818957911";
+    let resultTel = regTel.test(tel);
+    alert(resultTel)
+
+    var flag = reg.test(str);
+    alert(flag);
+
+</script>
+</body>
+</html>

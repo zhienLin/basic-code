@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎注册</title>
+    <link href="../css/register.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="form-div">
+    <div class="reg-content">
+        <h1>欢迎注册</h1>
+        <span>已有帐号？</span> <a href="#">登录</a>
+    </div>
+    <form id="reg-form" action="#" method="get">
+
+        <table>
+
+            <tr>
+                <td>用户名</td>
+                <td class="inputs">
+                    <input name="username" type="text" id="username">
+                    <br>
+                    <span id="username_err" class="err_msg" style="display:none">用户名不太受欢迎</span>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>密码</td>
+                <td class="inputs">
+                    <input name="password" type="password" id="password">
+                    <br>
+                    <span id="password_err" class="err_msg" style="display: none">密码格式有误</span>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>手机号</td>
+                <td class="inputs"><input name="tel" type="text" id="tel">
+                    <br>
+                    <span id="tel_err" class="err_msg" style="display: none">手机号格式有误</span>
+                </td>
+            </tr>
+
+        </table>
+
+        <div class="buttons">
+            <input value="注 册" type="submit" id="reg_btn">
+        </div>
+        <br class="clear">
+    </form>
+
+</div>
+<script>
+
+    //======================用户名的校验===================================
+    //1获取用户名的输入框
+    let username = document.getElementById("username");
+    //2绑定onblur的事件，也就是失去焦点
+    username.onblur = checkUserame;
+
+    function checkUserame() {
+        //3用value获取输入框中用户名的内容，并去除前后端的空白字符trim()
+        let getUsername = username.value.trim();
+        //4校验输入的是否正确，如果不正确，则显示，如果正确重新设置为不显示，
+        //如果不重新设置不显示，会出现更改正确之后仍然报错的情况
+        let flag = getUsername.length >= 6 && getUsername.length <= 12
+        if (flag)
+            document.getElementById("username_err").style = "display:none";
+        else
+            document.getElementById("username_err").style = "display: ";
+
+        return flag;
+    }
+
+
+    //======================密码的校验===================================
+    let pwd = document.getElementById("password");
+    pwd.onblur = checkPassword;
+
+    function checkPassword() {
+        let getPwd = pwd.value.trim();
+        let flag = getPwd.length > 10;
+        if (flag)
+            document.getElementById("password_err").style = "display:none";
+        else
+            document.getElementById("password_err").style = "display: ";
+
+        return flag;
+    }
+
+    //=====================手机号的校验===================================
+    let tel = document.getElementById("tel");
+    tel.onblur = checkTel
+
+    function checkTel() {
+        let getTel = tel.value.trim();
+        let flag = getTel.length == 11;
+        if (flag)
+            document.getElementById("tel_err").style = "display: none";
+        else
+            document.getElementById("tel_err").style = "display: ";
+
+        return flag;
+    }
+
+
+    //=====================表单的校验===================================
+
+    document.getElementById("reg-form").onsubmit = function () {
+        var submitFlag = checkUserame() && checkPassword() && checkTel();
+        return submitFlag;
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EnumNote/EnumNote.iml" filepath="$PROJECT_DIR$/EnumNote/EnumNote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IO/IO.iml" filepath="$PROJECT_DIR$/IO/IO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InterNet/InterNet.iml" filepath="$PROJECT_DIR$/InterNet/InterNet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ShangGuiGu/ShangGuiGu.iml" filepath="$PROJECT_DIR$/ShangGuiGu/ShangGuiGu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Thread/Thread.iml" filepath="$PROJECT_DIR$/Thread/Thread.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day05/day05.iml" filepath="$PROJECT_DIR$/day05/day05.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day06/day06.iml" filepath="$PROJECT_DIR$/day06/day06.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day13/day13.iml" filepath="$PROJECT_DIR$/day13/day13.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day18/day18.iml" filepath="$PROJECT_DIR$/day18/day18.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day19/day19.iml" filepath="$PROJECT_DIR$/day19/day19.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day20/day20.iml" filepath="$PROJECT_DIR$/day20/day20.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day21/day21.iml" filepath="$PROJECT_DIR$/day21/day21.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day22/day22.iml" filepath="$PROJECT_DIR$/day22/day22.iml" />
+      <module fileurl="file://$PROJECT_DIR$/day23/day23.iml" filepath="$PROJECT_DIR$/day23/day23.iml" />
+      <module fileurl="file://$PROJECT_DIR$/everydayexercise/everydayexercise.iml" filepath="$PROJECT_DIR$/everydayexercise/everydayexercise.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exception/exception.iml" filepath="$PROJECT_DIR$/exception/exception.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reflection/reflection.iml" filepath="$PROJECT_DIR$/reflection/reflection.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jap-demp:war">
+    <output-path>$PROJECT_DIR$/../jap-demp/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>jap-demp</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="jap-demp-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="jap-demp:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+    <!--这个别名的主要作用就是应用到映射文件上面去的
+        因为加载配置文件需要包名+类名。显得有点繁琐
+        这样定义完别名之后可以默认为再这个包内进行扫描
+        那么名字就是该包内的类名（不区别大小写）-->
+    <typeAliases>
+        <package name="com.itheima.pojo"/>
+    </typeAliases>
+
+
+    <!--
+        environments:配置数据库连接环境信息。可以配置多个environment，
+        通过default属性切换不同的environment.
+    -->
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///mybatis?useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="085529"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!-- &lt;!&ndash;加载SQL映射文件&ndash;&gt;
+         <mapper resource="com/itheima/mapper/BrandMapper.xml"/>
+     -->
+        <!--Mapper代理的方式，可以使用包扫描，不用一个一个罗列出来-->
+        <package name="com/itheima/mapper"/>
+    </mappers>
+
+</configuration>

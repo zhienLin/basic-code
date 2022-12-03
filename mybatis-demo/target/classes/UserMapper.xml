@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--一般来讲，这个文件的命名规则是根据所操作的表名称+Mapper所命名的
+    namespace是名称空间,这里先改成test,相当于包，用于名称区分
+-->
+
+<mapper namespace="test">
+    <select id="selectAll" resultType="com.itheima.pojo.User">
+    select * from tb_user;
+  </select>
+</mapper>
